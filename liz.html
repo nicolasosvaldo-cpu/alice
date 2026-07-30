@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background:#eba3d5;
+    font-family:Arial, Helvetica, sans-serif;
+    cursor:pointer;
+}
+
+/* Pergunta no fundo */
+.pergunta{
+    position:absolute;
+    top:35%;
+    width:100%;
+    text-align:center;
+    font-size:42px;
+    font-weight:bold;
+    color:#ffffff;
+    text-shadow:2px 2px 6px black;
+}
+
+/* Indicação */
+.instrucao{
+    position:absolute;
+    top:48%;
+    width:100%;
+    text-align:center;
+    font-size:24px;
+    color:#fff;
+    text-shadow:2px 2px 5px black;
+    animation:pulsar 1s infinite;
+}
+
+@keyframes pulsar{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+/* Palavra Alice */
+.alice{
+    position:absolute;
+    font-size:42px;
+    font-weight:bold;
+    color:#ff1493;
+    animation:subir 1.5s forwards;
+    user-select:none;
+}
+
+@keyframes subir{
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-80px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="pergunta">
+    Quem é a maior fã de Olivia Rodrigo do mundo?
+</div>
+
+<div class="instrucao">
+    👆 Clique em qualquer lugar da tela para descobrir!
+</div>
+
+<script>
+document.addEventListener("click", function(event){
+
+    const texto = document.createElement("div");
+    texto.className = "alice";
+    texto.textContent = "Alice ❤️";
+
+    texto.style.left = event.pageX + "px";
+    texto.style.top = event.pageY + "px";
+
+    document.body.appendChild(texto);
+
+    setTimeout(() => {
+        texto.remove();
+    }, 1500);
+
+});
+</script>
+
+</body>
+</html>
